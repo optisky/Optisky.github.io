@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            background: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var canvas = document.getElementById("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    var ctx = canvas.getContext("2d");
+
+    var text_arr = ['page', 'Not Found', '404', '找不到页面'];//显示文字
+    var text_num = 50; //页面要显示的文字个数
+    var word_arr = []; //储存文字坐标等属性的数组
+    var txt_min_size = 10; //文字最小大小
+    var txt_max_size = 50; //文字最大大小
+    var keypress = false; //默认键盘未点击状态，点击键盘实现加速效果
+    var acclerate = 3; //点击键盘加速速率
+
+    window.addEventListener('keydown', function () {
+        keypress = true;
+    }, true);
+    window.addEventListener('keyup', function () {
+        keypress = false;
+    }, true);
+
+    //生成一个随机随
+    function random(min, max) {
+        return Math.random() * (max - min + 1) + min;
+    }
+    //实现不同大小文字的移动速度不同
+    //out_min 最小速度
+    //out_max 最大速度
+    function range_map(value, in_min, in_max, out_min, out_max) {
+        return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
+
+    // 返回一个数的平方根
+    function distance(x, y, x1, y1) {
+        // sqrt() 方法可返回一个数的平方根。
+        // a² + b² = c²
+        return Math.sqrt((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
+    }
+    //储存文字坐标位置
+    function saveText() {
+        for (let i = 0; i < text_num; i++) {
+            let t = {
+                x: random(0, w),
+                y: random(0, h),
+                text: text_arr[~~random(0, text_arr.length)],
+                size: ~~random(txt_min_size, txt_max_size)
+            }
+            word_arr.push(t)
+        }
+        console.log(word_arr)
+    }
+
+    //在canvas绘制文字移动效果
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "#fff";
+        for (let i = 0; i < word_arr.length; i++) {
+            //文字大小，样式
+            ctx.font = word_arr[i].size + "px sans-serif";
+            //文字宽度
+            var t_w = ctx.measureText(word_arr[i].text);
+            ctx.fillText(word_arr[i].text, word_arr[i].x, word_arr[i].y);
+            if (keypress) {
+                word_arr[i].x += range_map(word_arr[i].size, txt_min_size, txt_max_size, 2, 4) * acclerate;
+            } else {
+                word_arr[i].x += range_map(word_arr[i].size, txt_min_size, txt_max_size, 2, 3);
+            }
+            //如果大于窗口宽度，那么重新返回，并且随机y轴位置和大小
+            if (word_arr[i].x >= w) {
+                word_arr[i].x = -t_w.width * 5;
+                word_arr[i].y = random(0, h);
+                word_arr[i].size = ~~random(txt_min_size, txt_max_size);
+            }
+        }
+        ctx.fill()
+        window.requestAnimationFrame(draw)
+    }
+    saveText()
+    draw()
+
+</script>
+
+</html>
