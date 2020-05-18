@@ -103,7 +103,7 @@
 				word_arr[i].x *= mouseAccelerate;
 			}*/
             //如果大于窗口宽度，那么重新返回，并且随机y轴位置和大小
-            if (word_arr[i].x >= w) {
+            if (word_arr[i].x <= -t_w.width) {
                 word_arr[i].x = +t_w.width * 5;
                 word_arr[i].y = random(0, h);
                 word_arr[i].size = ~~random(txt_min_size, txt_max_size);
