@@ -52,22 +52,51 @@ body, .intro::before {
 	font-size: 20px;
 }
 
-.a {
+a {
 	text-decoration: none;
 	color: white;
 }
 
-.a:hover {
+a:hover {
 	text-decoration: underline;
 	font-style: italic;
 }
 
+ul li {
+	list-style: none;
+}
+
+li {
+	color: white;
+	font-size: 20px;
+}
+
 .menubar {
-	margin-left: 100px;
+	margin-left: 50%;
+	margin-bottom: 20%;
 }
 
 .menubar>li {
-	font-size: 20px;
+	position: relative;
+}
+
+.menubar>li {
+	float: left;
+	height: inherit;
+	text-align: center;
+}
+
+.menubar a {
+	display: block;
+	font-size: 24px;
+	line-height: 50px;
+	padding: 0px 10px;
 	color: white;
 }
 
+li:hover a {
+	text-decoration: none;
+	font-style: normal;
+	transform: scale(1.1);
+	transition: all .5s;
+}
