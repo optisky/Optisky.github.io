@@ -1,4 +1,4 @@
-body, div:before {
+body, div::before {
 	background-image: url(images/background.jpg);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -13,7 +13,7 @@ body, div:before {
 	overflow: hidden;
 }
 
-div:before {
+div::before {
 	content: '';
 	width: 100%;
 	height: 50px;
