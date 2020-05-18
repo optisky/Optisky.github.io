@@ -49,7 +49,7 @@ body, .intro::before {
 
 #introduction {
 	color: white;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 a {
@@ -72,24 +72,26 @@ li {
 }
 
 .menubar {
+	width: 600px;
+	heigth: 30px;
 	margin-left: 50%;
-	margin-bottom: 20%;
+	margin-top: 90%;
 }
 
 .menubar>li {
 	position: relative;
 }
 
-.menubar>li {
+.menubar li {
 	float: left;
 	height: inherit;
 	text-align: center;
+	border-right: 1px solid gray;
 }
 
 .menubar a {
 	display: block;
-	font-size: 24px;
-	line-height: 50px;
+	line-height: 20px;
 	padding: 0px 10px;
 	color: white;
 }
