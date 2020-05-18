@@ -27,10 +27,11 @@ body, .intro::before {
 			  , 4px 0 4px #0003
 			  , 0 4px 4px #0003;
 	background: #FFF4;*/
-	left: 50%;
-	top: 50%;
-	margin-left: 140px;
-	margin-top: 200px;
+	position: relative;
+	left: -40%;
+	//top: -40%;
+	margin-left: 50%;
+	margin-top: 20%;
 }
 
 .intro::before {
@@ -74,8 +75,11 @@ li {
 .menubar {
 	width: 600px;
 	heigth: 30px;
+	position: relative;
 	margin-left: 50%;
-	margin-top: 90%;
+	margin-top: 10%;
+	left: -300px;
+	top: -15px;
 }
 
 .menubar>li {
