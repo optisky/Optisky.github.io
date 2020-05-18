@@ -54,8 +54,10 @@ body, .intro::before {
 
 a {
 	text-decoration: none;
+	color: white;
 }
 
 a:hover {
 	text-decoration: underline;
+	font-style: bold;
 }
