@@ -31,14 +31,14 @@
     var ctx = canvas.getContext("2d");
 
     var text_arr = ['Not Found', '404', '找不到页面', '无人区', '系噉嘅啦', '揾食艰难', '做人最紧要开心'];//显示文字
-    var text_num = 30; //页面要显示的文字个数
+    var text_num = 20; //页面要显示的文字个数
     var word_arr = []; //储存文字坐标等属性的数组
-    var txt_min_size = 10; //文字最小大小
-    var txt_max_size = 100; //文字最大大小
+    var txt_min_size = 20; //文字最小大小
+    var txt_max_size = 200; //文字最大大小
     var keypress = false; //默认键盘未点击状态，点击键盘实现加速效果
-	var mouseKeypress = false;
+	//var mouseKeypress = false;
     var acclerate = 3; //点击键盘加速速率
-	var mouseAccelerate = 2; // mouse click
+	//var mouseAccelerate = 2; // mouse click
 
     window.addEventListener('keydown', function () {
         keypress = true;
@@ -46,12 +46,12 @@
     window.addEventListener('keyup', function () {
         keypress = false;
     }, true);
-	window.addEventListener('click', function () {
+	/*window.addEventListener('click', function () {
 		mouseKeypress = true;
 	}, true);
 	window.addEventListener('mouseup', function () {
 		mouseKeypress = false;
-	}, true);
+	}, true);*/
 
     //生成一个随机随
     function random(min, max) {
@@ -99,9 +99,9 @@
             } else {
                 word_arr[i].x += range_map(word_arr[i].size, txt_min_size, txt_max_size, 2, 3);
             }
-			if (mouseKeypress) {
+			/*if (mouseKeypress) {
 				word_arr[i].x *= mouseAccelerate;
-			}
+			}*/
             //如果大于窗口宽度，那么重新返回，并且随机y轴位置和大小
             if (word_arr[i].x >= w) {
                 word_arr[i].x = -t_w.width * 5;
