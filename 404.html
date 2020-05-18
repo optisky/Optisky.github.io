@@ -95,16 +95,16 @@
             var t_w = ctx.measureText(word_arr[i].text);
             ctx.fillText(word_arr[i].text, word_arr[i].x, word_arr[i].y);
             if (keypress) {
-                word_arr[i].x += range_map(word_arr[i].size, txt_min_size, txt_max_size, 2, 4) * acclerate;
+                word_arr[i].x -= range_map(word_arr[i].size, txt_min_size, txt_max_size, 2, 4) * acclerate;
             } else {
-                word_arr[i].x += range_map(word_arr[i].size, txt_min_size, txt_max_size, 2, 3);
+                word_arr[i].x -= range_map(word_arr[i].size, txt_min_size, txt_max_size, 2, 3);
             }
 			/*if (mouseKeypress) {
 				word_arr[i].x *= mouseAccelerate;
 			}*/
             //如果大于窗口宽度，那么重新返回，并且随机y轴位置和大小
             if (word_arr[i].x >= w) {
-                word_arr[i].x = -t_w.width * 5;
+                word_arr[i].x = +t_w.width * 5;
                 word_arr[i].y = random(0, h);
                 word_arr[i].size = ~~random(txt_min_size, txt_max_size);
             }
