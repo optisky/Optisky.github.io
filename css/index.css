@@ -66,3 +66,8 @@ body, .intro::before {
 	margin-left: 100px;
 }
 
+.menubar>li {
+	font-size: 20px;
+	color: white;
+}
+
