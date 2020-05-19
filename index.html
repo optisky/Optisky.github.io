@@ -43,6 +43,16 @@
 		</div>
 	</body>
 	<script type="text/javascript">
-		document.getElementById("date-block").innerHTML = Date();
+		var month = new Array();
+		month['0'] = 'Jan'; month['1'] = 'Feb'; month['2'] = 'Mar'; month['3'] = 'Apr'; month['4'] = 'May'; month['5'] = 'Jun';
+		month['6'] = 'Jul'; month['7'] = 'Aug'; month['8'] = 'Sep'; month['9'] = 'Oct'; month['10'] = 'Nov'; month['11'] = 'Dec';
+		var day = new Array();
+		day['0'] = 'Sun'; day['1'] = 'Mon'; day['2'] = 'Tue'; day['3'] = 'Wed'; day['4'] = 'Thu'; day['5'] = 'Fri'; day['6'] = 'Sat';
+		var date = new Date();
+		var con = day[date.getDay()];
+		con = con + ' ' + month[date.getMonth()];
+		con = con + ' ' + date.getDate();
+		con = con + ', ' + date.getFullYear();
+		document.getElementById("date-block").innerHTML = con;
 	</script>
 </html>
