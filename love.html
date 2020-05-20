@@ -2,18 +2,27 @@
 <html>
 	<head>
 		<title>LOVE!</title>
+		<script type="text/javascript" src="js/image/imageProcessor.js"></script>
 	<head>
 	<body style="background:rgb(0,0,0)">
 		<center>
 		<span style="color:white">word: </span>
 		<input id="inputBox" type="text" value="programming"></input>
 		<button id="genButton" onclick="generate()">Generate</input>
+		
 		</center>
-		<div id="showImg" style="width:100%;height:100%"></div>
+		<canvas id="cvs"></canvas>
 	</body>
 	<script type="text/javascript">
 		(function() {
-			
+			var loader = new ImageLoader();
+			var canvas = document.getElementById('cvs');
+			var context = canvas.getContext('2d');
+			document.getElementById('genButton').onclick = function () {
+				loader.loadImage('images/heart.png', canvas);
+				var I = loader.result;
+				I.render(canvas);
+			};
 		})();
 	</script>
 </html>
