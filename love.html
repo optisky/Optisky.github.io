@@ -22,9 +22,8 @@
 					var canvas = document.createElement('canvas');
 					var context = canvas.getContext('2d');
 					context.drawImage(img, 0, 0);
-					var pixData = context.getImageData(0, 0, w, h).data;
-					console.log(pixData[2]);
-					console.log(typeof(pixData));
+					var imgd = context.getImageData(0, 0, w, h);
+					var pixData = imgd.data;
 					for (var i = 0, n = pixData.length; i < n; i += 4) {
 						pixData[i] = 255 - pixData[i];
 						pixData[i+1] = 255 - pixData[i+1];
