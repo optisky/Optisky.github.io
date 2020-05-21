@@ -26,11 +26,11 @@
 					console.log(pixData[2]);
 					console.log(typeof(pixData));
 					for (var i = 0, n = pixData.length; i < n; i += 4) {
-					console.log(pixData[i]);
+						pixData[i] = 255 - pixData[i];
+						pixData[i+1] = 255 - pixData[i+1];
+						pixData[i+2] = 255 - pixData[i+2];
 					}
-					$('el').click(function(e){
-   console.log(e.clientX, e.clientY)
-});
+					context.putImageData(img, 300, 300);
 				};
 			})(); 
 		</script>
