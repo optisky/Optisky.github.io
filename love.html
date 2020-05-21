@@ -22,7 +22,7 @@
 					var canvas = document.createElement('canvas');
 					var context = canvas.getContext('2d');
 					context.drawImage(img, 0, 0);
-					var pixData = context.getImageData(0, 0, w, h);
+					var pixData = context.getImageData(0, 0, w, h).data;
 					console.log(pixData[2]);
 					console.log(typeof(pixData));
 				};
