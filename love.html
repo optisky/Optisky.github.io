@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>LOVE!</title>
-		<script type="text/javascript" src="js/image/imageProcessor.js"></script>
-	<head>
-	<body style="background:rgb(0,0,0)">
-		<center>
-		<span style="color:white">word: </span>
-		<input id="inputBox" type="text" value="programming"></input>
-		<button id="genButton" onclick="generate()">Generate</input>
-		
-		</center>
-		<canvas id="cvs"></canvas>
-	</body>
-	<script type="text/javascript">
-		(function() {
-			var loader = new ImageLoader();
-			var canvas = document.getElementById('cvs');
-			var context = canvas.getContext('2d');
-			document.getElementById('genButton').onclick = function () {
-				loader.loadImage('images/heart.png', canvas);
-				var I = loader.result;
-				I.render(canvas);
-			};
-		})();
-	</script>
-</html>
+	<html>
+		<head>
+			<title>LOVE!</title>
+		</head>
+		<body style="background:rgb(0,0,0)">
+		</body>
+		<script type="text/javascript">
+			(function() {
+				var imgTag = document.createElement('img');
+				imgTag.id = 'demo';
+				imgTag.src = 'https://optisky.github.io/images/heart.gif';
+				document.body.appendChild(imgTag);
+				imgTag.onload = function () { // avoid the w = 0
+					var img = document.getElementById('demo');
+					console.log(img == null);
+					console.log(typeof(img));
+					var w = img.width || img.naturalWidth;
+					var h = img.height || img.naturalHeight;
+					console.log(img.naturalWidth);
+					console.log(h);
+					var canvas = document.createElement('canvas');
+					var context = canvas.getContext('2d');
+					context.drawImage(img, 0, 0);
+					var pixData = context.getImageData(0, 0, w, h);
+				};
+			})(); 
+		</script>
+	</html>
