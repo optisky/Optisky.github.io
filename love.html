@@ -13,16 +13,17 @@
 				document.body.appendChild(imgTag);
 				imgTag.onload = function () { // avoid the w = 0
 					var img = document.getElementById('demo');
-					console.log(img == null);
-					console.log(typeof(img));
+					//console.log(img == null);
+					//console.log(typeof(img));
 					var w = img.width || img.naturalWidth;
 					var h = img.height || img.naturalHeight;
-					console.log(img.naturalWidth);
-					console.log(h);
+					//console.log(img.naturalWidth);
+					//console.log(h);
 					var canvas = document.createElement('canvas');
 					var context = canvas.getContext('2d');
 					context.drawImage(img, 0, 0);
 					var pixData = context.getImageData(0, 0, w, h);
+					console.log(pixData[2]);
 				};
 			})(); 
 		</script>
