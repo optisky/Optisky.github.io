@@ -25,6 +25,9 @@
 					var pixData = context.getImageData(0, 0, w, h).data;
 					console.log(pixData[2]);
 					console.log(typeof(pixData));
+					for (var i = 0, n = pixData.length; i < n; i += 4) {
+					console.log(pixData[i]);
+					}
 				};
 			})(); 
 		</script>
