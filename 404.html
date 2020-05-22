@@ -30,7 +30,7 @@
     canvas.height = h;
     var ctx = canvas.getContext("2d");
 
-    var text_arr = ['Not Found', '404', '你涉嫌非法闯入', '无人区', '系噉嘅啦', '揾食艰难', '做人最紧要开心', 'but no problem', '傻猪嚟噶'];//显示文字
+    var text_arr = ['小生怕怕', 'Not Found', '404', '你涉嫌非法闯入', '无人区', '系噉嘅啦', '揾食艰难', '做人最紧要开心', 'but no problem', '傻猪嚟噶'];//显示文字
     var text_num = 8; //页面要显示的文字个数
     var word_arr = []; //储存文字坐标等属性的数组
     var txt_min_size = 20; //文字最小大小
@@ -76,7 +76,7 @@
             let t = {
                 x: random(0, w),
                 y: random(0, h),
-                text: text_arr[~~random(0, text_arr.length)],
+                text: text_arr[~~random(0, text_arr.length-1)],
                 size: ~~random(txt_min_size, txt_max_size)
             }
             word_arr.push(t)
