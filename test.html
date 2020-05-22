@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TEST</title>
+		<meta charset="utf-8">
+	</head>
+	
+	<body>
+	<button id="createBtn" onclick=createp()>Create</button>
+	<button id="deleteBtn" onclick=deletep()>Delete</button> 
+	</body>
+	
+	<script>
+		/*
+		function createp() {
+			var p = document.createElement('p');
+			p.id = 'p';
+			p.innerHTML = "PPPPPPPPP";
+			document.body.appendChild(p);
+		}
+		function deletep() {
+			var p = document.getElementById('p');
+			p.parentNode.removeChild(p);
+		}
+		*/
+		
+	
+		function person(name) {
+			this.name = name;
+			this.printName1 = function () {
+				console.log(name);
+				console.log(person.name);
+			}
+		}
+		person.printName2 = function () {
+			console.log(this.name);
+			console.log(person.name);
+		}
+		person.prototype.printName3 = function () {
+			console.log(this.name);
+			console.log(person.name);
+			console.log(this.printName1());
+		}
+		var p = new person("tom");
+		p.printName1();
+		person.printName2();
+		p.printName3();
+	
+	</script>
+	
+</html>
+		
