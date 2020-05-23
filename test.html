@@ -3,6 +3,7 @@
 	<head>
 		<title>TEST</title>
 		<meta charset="utf-8">
+		<script type="text/javascript" src="js/image/rushImageProcessor.js"></script>
 	</head>
 	
 	<body>
@@ -24,7 +25,7 @@
 		}
 		*/
 		
-	
+		/*
 		function person(name) {
 			this.name = name;
 			this.printName1 = function () {
@@ -45,7 +46,11 @@
 		p.printName1();
 		person.printName2();
 		p.printName3();
-	
+		*/
+		var img = imread('images/heart.png');
+		console.log(img.width);
+		console.log(img.height);
+		console.log(img.getPixel(10,10));
 	</script>
 	
 </html>
