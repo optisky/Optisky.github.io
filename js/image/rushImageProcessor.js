@@ -52,15 +52,12 @@ function imread(src) {
 	var imgtag = new Image();
 	imgtag.src = src;
 	document.body.appendChild(imgtag);
-	var isImageOnload = false;
-	var count = 0;
+	var img = undefined;
 	imgtag.onload = function () {
-		isImageOnload = true;
-		
+		img = new RGBImage(imgtag);
 	};
-	while (!isImageOnload) {console.log(count++);}
-	var img = new RGBImage(imgtag);
-	imgtag.parentNode.removeChild(imgtag);
+	
+	//imgtag.parentNode.removeChild(imgtag);
 	console.log(img.width);
 	return img;
 }
