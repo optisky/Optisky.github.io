@@ -7,23 +7,32 @@
 	</head>
 	
 	<body>
-	<button id="createBtn" onclick=createp()>Create</button>
-	<button id="deleteBtn" onclick=deletep()>Delete</button> 
+	<button id="createBtn" onclick=createimg()>Create</button>
+	<button id="deleteBtn" onclick=deleteimg()>Delete</button> 
+	<p id="p1">load</p>
+	<p id="p2"></p>
 	</body>
 	
 	<script>
-		/*
-		function createp() {
-			var p = document.createElement('p');
-			p.id = 'p';
-			p.innerHTML = "PPPPPPPPP";
-			document.body.appendChild(p);
+		
+		function createimg() {
+			var img = new Image();
+			img.src = 'images/heart.png';
+			document.body.appendChild(img);
+			img.id = 'img';
+			//document.getElementById('p1').innerHTML = img.readyState;
+			img.onreadystatechange = function () {
+				console.log(img.readyState);
+				if (img.readyState == 'complete' || img.readyState == 'loaded') {
+					document.getElementById('p1').innerHTML = 'loaded';
+				}
+			}
 		}
 		function deletep() {
-			var p = document.getElementById('p');
-			p.parentNode.removeChild(p);
+			var img = document.getElementById('img');
+			img.parentNode.removeChild(img);
 		}
-		*/
+		
 		
 		/*
 		function person(name) {
@@ -47,12 +56,15 @@
 		person.printName2();
 		p.printName3();
 		*/
+		/*
 		var img = imread('images/heart.png');
 		console.log(typeof(img));
 		console.log(img.constructor.name);
 		console.log(img.width);
 		console.log(img.height);
 		console.log(img.getPixel(10,10));
+		*/
+		
 	</script>
 	
 </html>

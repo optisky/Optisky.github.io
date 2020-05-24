@@ -56,7 +56,7 @@ function imread(src) {
 	imgtag.onload = function () {
 		img = new RGBImage(imgtag);
 	};
-	
+	console.log(img.complete);
 	//imgtag.parentNode.removeChild(imgtag);
 	console.log(img.width);
 	return img;
