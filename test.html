@@ -48,6 +48,10 @@
 		p.printName3();
 		*/
 		var img = imread('images/heart.png');
+		console.log(typeof(img));
+		console.log(img.constructor.name);
+		console.log(img.constructor);
+		console.log(img.constructor == RGBImage);
 		console.log(img.width);
 		console.log(img.height);
 		console.log(img.getPixel(10,10));

@@ -52,11 +52,13 @@ function imread(src) {
 	var imgtag = new Image();
 	imgtag.src = src;
 	document.body.appendChild(imgtag);
-	imgtag.onload = function () {
-	var img = new RGBImage(imgtag);
+	var img = 0;
+	//imgtag.onload = function () {
+	img = new RGBImage(imgtag);
 	imgtag.parentNode.removeChild(imgtag);
+	console.log(img.width);
+	//}
 	return img;
-	}
 }
 
 RGBImage.prototype.getPixel = function (row, column) {
