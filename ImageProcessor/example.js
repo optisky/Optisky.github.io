@@ -81,6 +81,7 @@ img.src = '0.jpg';
   var y = grayDist;
   var linewidth = 3;
   var color = 'blue';
+  var gap = 10;
   
   var width = cvs.width;
   var height = cvs.height;
