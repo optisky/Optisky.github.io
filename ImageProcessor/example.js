@@ -32,6 +32,12 @@ function plot(x, y, cvs, gap=10, linewidth=2, color='blue') {
   ctx.stroke();
 }
 
+
+// 创建Canvas元素
+var canvas1 = document.createElement('canvas');
+canvas1.width = 400;
+canvas1.height = 400;
+document.body.appendChild(canvas1);
 //创建一个Image对象，用于加载图像数据
 var img = new Image();
 
@@ -67,10 +73,6 @@ img.onload = function() {
 //设置图像路径，加载图像数据
 img.src = '0.jpg';
 
-// 创建Canvas元素
-var canvas1 = document.createElement('canvas');
-canvas1.width = 400;
-canvas1.height = 400;
-document.body.appendChild(canvas1);
+
 
 plot(grayLevel, grayDistribution);
