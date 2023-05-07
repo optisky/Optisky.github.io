@@ -33,11 +33,7 @@ function plot(x, y, cvs, gap=10, linewidth=2, color='blue') {
 }
 
 
-// 创建Canvas元素
-var canvas1 = document.createElement('canvas');
-canvas1.width = 400;
-canvas1.height = 400;
-document.body.appendChild(canvas1);
+
 //创建一个Image对象，用于加载图像数据
 var img = new Image();
 img.src = '0.jpg';
@@ -76,13 +72,20 @@ img.src = '0.jpg';
   //plot(grayLevel, grayDistribution, canvas1);
 
 
+
+  // 创建Canvas元素
+var canvas1 = document.createElement('canvas');
+canvas1.width = 400;
+canvas1.height = 400;
+document.body.appendChild(canvas1);
+
   var cvs = canvas1;
   var x = grayLevel;
   var y = grayDist;
   var linewidth = 3;
   var color = 'blue';
   var gap = 10;
-  
+
   var width = cvs.width;
   var height = cvs.height;
   var xMax = max(x);
