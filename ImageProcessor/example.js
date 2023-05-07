@@ -66,9 +66,44 @@ img.src = '0.jpg';
     grayDistribution[gray]++;
   }
 
+  var grayDist = new Array(256);
+  var m = max(grayDistribution);
+  for (var i = 0; i < 256; i++) {
+    grayDist[i] = grayDistribution[i]/m*100;
+  }
   //打印灰度分布
   console.log(grayDistribution);
-  plot(grayLevel, grayDistribution, canvas1);
+  //plot(grayLevel, grayDistribution, canvas1);
+
+
+  var cvs = canvas1;
+  var x = grayLevel;
+  var y = grayDist;
+  var linewidth = 3;
+  var color = 'blue';
+  
+  var width = cvs.width;
+  var height = cvs.height;
+  var xMax = max(x);
+  var xMin = min(x);
+  var yMax = max(y);
+  var yMin = min(y);
+  var axisWidth = xMax - xMin;
+  var axisHeight = yMax - yMin;
+  var deltaX = (width - gap*2) / axisWidth;
+  var deltaY = (height - gap*2) / axisHeight;
+
+  var ctx = cvs.getContext('2d');
+  ctx.lineWidth = linewidth;
+  ctx.strokeStyle = color;
+
+  // 开始绘制
+  ctx.beginPath();
+  ctx.moveTo(Math.round((x[0]-xMin)*deltaX+gap), height - Math.round((y[0]-yMin)*deltaY+gap));
+  for (var i = 1; x < x.length; i++) {
+    ctx.lineTo(Math.round((x[i]-xMin)*deltaX+gap), height - Math.round((y[i]-yMin)*deltaY+gap));
+  }
+  ctx.stroke();
 
 
 //设置图像路径，加载图像数据
