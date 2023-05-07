@@ -68,6 +68,7 @@ img.onload = function() {
 
   //打印灰度分布
   console.log(grayDistribution);
+  plot(grayLevel, grayDistribution);
 };
 
 //设置图像路径，加载图像数据
@@ -75,4 +76,4 @@ img.src = '0.jpg';
 
 
 
-plot(grayLevel, grayDistribution);
+
