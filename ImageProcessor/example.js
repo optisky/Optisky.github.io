@@ -25,9 +25,9 @@ function plot(x, y, cvs, gap=10, linewidth=2, color='blue') {
 
   // 开始绘制
   ctx.beginPath();
-  ctx.moveTo(Math.round((x[0]-xMin)*deltaX+gap), Math.round((y[0]-yMin)*deltaY+gap));
-  for (var i = 0; x < x.length; i++) {
-    ctx.lineTo(Math.round((x[i]-xMin)*deltaX+gap), Math.round((y[i]-yMin)*deltaY+gap));
+  ctx.moveTo(Math.round((x[0]-xMin)*deltaX+gap), height - Math.round((y[0]-yMin)*deltaY+gap));
+  for (var i = 1; x < x.length; i++) {
+    ctx.lineTo(Math.round((x[i]-xMin)*deltaX+gap), height - Math.round((y[i]-yMin)*deltaY+gap));
   }
   ctx.stroke();
 }
@@ -40,9 +40,9 @@ canvas1.height = 400;
 document.body.appendChild(canvas1);
 //创建一个Image对象，用于加载图像数据
 var img = new Image();
-
+img.src = '0.jpg';
 //当图像数据加载完成时，执行函数
-img.onload = function() {
+
   //创建一个Canvas元素，用于绘制图像
   var canvas = document.createElement('canvas');
   var ctx = canvas.getContext('2d');
@@ -69,10 +69,10 @@ img.onload = function() {
   //打印灰度分布
   console.log(grayDistribution);
   plot(grayLevel, grayDistribution, canvas1);
-};
+
 
 //设置图像路径，加载图像数据
-img.src = '0.jpg';
+
 
 
 
