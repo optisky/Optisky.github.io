@@ -25,9 +25,23 @@ function plot(x, y, cvs, gap=10, linewidth=2, color='blue') {
 
   // 开始绘制
   ctx.beginPath();
-  ctx.moveTo(Math.round((x[0]-xMin)*deltaX+gap), height - Math.round((y[0]-yMin)*deltaY+gap));
-  for (var i = 1; x < x.length; i++) {
-    ctx.lineTo(Math.round((x[i]-xMin)*deltaX+gap), height - Math.round((y[i]-yMin)*deltaY+gap));
+  ctx.moveTo((x[0]-xMin)*deltaX+gap, height - (y[0]-yMin)*deltaY - gap);
+  //console.log(0+':'+((x[0]-xMin)*deltaX+gap)+','+(height - (y[0]-yMin)*deltaY-gap));
+  for (var i = 1; i < x.length; i++) {
+    ctx.lineTo((x[i]-xMin)*deltaX+gap, height - (y[i]-yMin)*deltaY-gap);
+    //console.log(i+':'+((x[i]-xMin)*deltaX+gap)+','+(height - (y[i]-yMin)*deltaY - gap));
+  }
+  ctx.stroke();
+}
+
+function ezplot(x,y,canvas) {
+  var ctx = canvas.getContext('2d');
+  var height = canvas.height;
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(x[0], height - y[0]);
+  for (var i = 1; i < x.length; ++i) {
+      ctx.lineTo(x[i], height - y[i]);
   }
   ctx.stroke();
 }
@@ -79,36 +93,7 @@ canvas1.width = 400;
 canvas1.height = 400;
 document.body.appendChild(canvas1);
 
-  var cvs = canvas1;
-  var x = grayLevel;
-  var y = grayDist;
-  var linewidth = 3;
-  var color = 'blue';
-  var gap = 10;
-
-  var width = cvs.width;
-  var height = cvs.height;
-  var xMax = max(x);
-  var xMin = min(x);
-  var yMax = max(y);
-  var yMin = min(y);
-  var axisWidth = xMax - xMin;
-  var axisHeight = yMax - yMin;
-  var deltaX = (width - gap*2) / axisWidth;
-  var deltaY = (height - gap*2) / axisHeight;
-
-  var ctx = cvs.getContext('2d');
-  ctx.lineWidth = linewidth;
-  ctx.strokeStyle = color;
-
-  // 开始绘制
-  ctx.beginPath();
-  ctx.moveTo(Math.round((x[0]-xMin)*deltaX+gap), height - Math.round((y[0]-yMin)*deltaY+gap));
-  for (var i = 1; x < x.length; i++) {
-    ctx.lineTo(Math.round((x[i]-xMin)*deltaX+gap), height - Math.round((y[i]-yMin)*deltaY+gap));
-  }
-  ctx.stroke();
-
+plot(grayLevel, grayDist, canvas1);
 
 //设置图像路径，加载图像数据
 
