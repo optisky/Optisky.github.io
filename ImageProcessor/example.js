@@ -82,7 +82,7 @@ img.onload = function() {
   
   //创建一个用于存储灰度分布的数组
   var grayDistribution = new Array(256).fill(0);
-  var grayLevel = new Array(256).fill(0,1,255);
+  var grayLevel = new Array(256);
   //计算灰度分布
   for (var i = 0; i < data.length; i += 4) {
     var r = data[i];
@@ -96,6 +96,7 @@ img.onload = function() {
   var m = max(grayDistribution);
   for (var i = 0; i < 256; i++) {
     grayDist[i] = grayDistribution[i]/m*100;
+    grayLevel[i] = i;
   }
   //打印灰度分布
   console.log(grayDistribution);
