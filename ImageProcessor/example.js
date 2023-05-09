@@ -1,4 +1,20 @@
 /* function */
+
+function addCanvasBorder(canvas, linewidth=1, color='#000000') {
+  var width = canvas.width;
+  var height = canvas.height;
+  var ctx = canvas.getContext('2d');
+  ctx.lineWidth = linewidth;
+  ctx.strokeStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(width, 0);
+  ctx.lineTo(width, height);
+  ctx.lineTo(0, height);
+  ctx.lineTo(0, 0);
+  ctx.stroke();
+}
+
 function max(arr) {
   return Math.max.apply(null, arr);
 }
@@ -14,9 +30,9 @@ function plot(x, y, cvs, gap=10, linewidth=2, color='blue') {
   var xMin = min(x);
   var yMax = max(y);
   var yMin = min(y);
-  var axisWidth = xMax - xMin;
+  var axisWidth = xMax - xMin; console.log('axisWdidth: '+axisWidth);
   var axisHeight = yMax - yMin;
-  var deltaX = (width - gap*2) / axisWidth;
+  var deltaX = (width - gap*2) / axisWidth; console.log('delta_x',deltaX)
   var deltaY = (height - gap*2) / axisHeight;
 
   var ctx = cvs.getContext('2d');
@@ -26,10 +42,10 @@ function plot(x, y, cvs, gap=10, linewidth=2, color='blue') {
   // 开始绘制
   ctx.beginPath();
   ctx.moveTo((x[0]-xMin)*deltaX+gap, height - (y[0]-yMin)*deltaY - gap);
-  //console.log(0+':'+((x[0]-xMin)*deltaX+gap)+','+(height - (y[0]-yMin)*deltaY-gap));
+  console.log(0+':'+((x[0]-xMin)*deltaX+gap)+','+(height - (y[0]-yMin)*deltaY-gap));
   for (var i = 1; i < x.length; i++) {
     ctx.lineTo((x[i]-xMin)*deltaX+gap, height - (y[i]-yMin)*deltaY-gap);
-    //console.log(i+':'+((x[i]-xMin)*deltaX+gap)+','+(height - (y[i]-yMin)*deltaY - gap));
+    console.log(i+':'+((x[i]-xMin)*deltaX+gap)+','+(height - (y[i]-yMin)*deltaY - gap));
   }
   ctx.stroke();
 }
@@ -52,7 +68,7 @@ function ezplot(x,y,canvas) {
 var img = new Image();
 img.src = '0.jpg';
 //当图像数据加载完成时，执行函数
-
+img.onload = function() {
   //创建一个Canvas元素，用于绘制图像
   var canvas = document.createElement('canvas');
   var ctx = canvas.getContext('2d');
@@ -92,11 +108,14 @@ var canvas1 = document.createElement('canvas');
 canvas1.width = 400;
 canvas1.height = 400;
 document.body.appendChild(canvas1);
+addCanvasBorder(canvas1);
+
+
 
 plot(grayLevel, grayDist, canvas1);
 
 //设置图像路径，加载图像数据
-
+}
 
 
 
