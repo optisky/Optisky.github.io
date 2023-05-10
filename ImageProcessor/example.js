@@ -81,21 +81,25 @@ img.onload = function() {
   var data = imageData.data;
   
   //创建一个用于存储灰度分布的数组
-  var grayDistribution = new Array(256).fill(0);
+  var r = new Array(256).fill(0);
+  var g = new Array(256).fill(0);
+  var b = new Array(256).fill(0);
   var grayLevel = new Array(256);
   //计算灰度分布
   for (var i = 0; i < data.length; i += 4) {
-    var r = data[i];
-    var g = data[i + 1];
-    var b = data[i + 2];
-    var gray = Math.round((r + g + b) / 3);
-    grayDistribution[gray]++;
+    r[data[i]]++;
+    g[data[i + 1]]++;
+    b[data[i + 2]]++;
   }
 
-  var grayDist = new Array(256);
-  var m = max(grayDistribution);
+  var rDist = new Array(256);
+  var gDist = new Array(256);
+  var bDist = new Array(256);
+  var m = max(Array(max(r), max(g), max(b)));
   for (var i = 0; i < 256; i++) {
-    grayDist[i] = grayDistribution[i]/m*100;
+    rDist[i] = r[i]/m*100;
+    gDist[i] = g[i]/m*100;
+    bDist[i] = b[i]/m*100;
     grayLevel[i] = i;
   }
   //打印灰度分布
@@ -113,7 +117,9 @@ addCanvasBorder(canvas1);
 
 
 
-plot(grayLevel, grayDist, canvas1);
+plot(grayLevel, rDist, canvas1, color='#ff0000');
+plot(grayLevel, gDist, canvas1, color='#00ff00');
+plot(grayLevel, bDist, canvas1, color='#0000ff');
 
 //设置图像路径，加载图像数据
 }
