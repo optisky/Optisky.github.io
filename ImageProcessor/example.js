@@ -1,4 +1,31 @@
 /* function */
+function regularizeCanvasByImage(img, canvas, widthLimit=500, heightLimit=500) {
+  var imgHeight = img.height;
+  var imgWidth = img.width;
+  var canvasHeight = canvas.height;
+  var canvasWidth = canvas.width;
+  if (imgHeight >= imgWidth) {
+    if (imgHeight <= heightLimit) {
+      canvas.height = imgHeight;
+      canvas.width = imgWidth;
+      return;
+    } else {
+      canvas.height = heightLimit;
+      canvas.width = parseInt(imgWidth/imgHeight*heightLimit)+1;
+      return;
+    }
+  } else {
+    if (imgWidth <= widthLimit) {
+      canvas.width = imgWidth;
+      canvas.height = imgHeight;
+      return;
+    } else {
+      canvas.width = widthLimit;
+      canvas.height = parseInt(imgHeight/imgWidth*widthLimit)+1;
+      return;
+    }
+  }
+}
 
 function addCanvasBorder(canvas, linewidth=1, color='#000000') {
   var width = canvas.width;
@@ -73,7 +100,8 @@ img.onload = function() {
   var canvas = document.createElement('canvas');
   var ctx = canvas.getContext('2d');
   document.body.appendChild(canvas);
-  //将图像绘制到Canvas上
+  //将图像绘制到Canvas上 
+  regularizeCanvasByImage(img, canvas, 500, 500);
   ctx.drawImage(img, 0, 0);
   
   //获取Canvas中的图像数据
