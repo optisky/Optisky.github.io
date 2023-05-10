@@ -101,7 +101,7 @@ img.onload = function() {
   var ctx = canvas.getContext('2d');
   document.body.appendChild(canvas);
   //将图像绘制到Canvas上 
-  regularizeCanvasByImage(img, canvas, 500, 500);
+  //regularizeCanvasByImage(img, canvas, 500, 500);
   ctx.drawImage(img, 0, 0);
   
   //获取Canvas中的图像数据
