@@ -115,7 +115,9 @@ canvas1.height = 400;
 document.body.appendChild(canvas1);
 addCanvasBorder(canvas1);
 
-
+console.log(r);
+console.log(g);
+console.log(b);
 
 plot(grayLevel, rDist, canvas1, 10, 2, '#ff0000');
 plot(grayLevel, gDist, canvas1, 10, 2, color='#00ff00');
