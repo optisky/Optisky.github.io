@@ -117,9 +117,9 @@ addCanvasBorder(canvas1);
 
 
 
-plot(grayLevel, rDist, canvas1, color='#ff0000');
-plot(grayLevel, gDist, canvas1, color='#00ff00');
-plot(grayLevel, bDist, canvas1, color='#0000ff');
+plot(grayLevel, rDist, canvas1, 10, 2, '#ff0000');
+plot(grayLevel, gDist, canvas1, 10, 2, color='#00ff00');
+plot(grayLevel, bDist, canvas1, 10, 2, color='#0000ff');
 
 //设置图像路径，加载图像数据
 }
