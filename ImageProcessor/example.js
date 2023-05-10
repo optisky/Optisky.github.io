@@ -103,7 +103,7 @@ img.onload = function() {
     grayLevel[i] = i;
   }
   //打印灰度分布
-  console.log(grayDistribution);
+  //console.log(grayDistribution);
   //plot(grayLevel, grayDistribution, canvas1);
 
 
