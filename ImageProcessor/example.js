@@ -66,7 +66,7 @@ function ezplot(x,y,canvas) {
 
 //创建一个Image对象，用于加载图像数据
 var img = new Image();
-img.src = '0.jpg';
+img.src = 'pic.jpg';
 //当图像数据加载完成时，执行函数
 img.onload = function() {
   //创建一个Canvas元素，用于绘制图像
