@@ -99,6 +99,8 @@ img.onload = function() {
   //创建一个Canvas元素，用于绘制图像
   var canvas = document.createElement('canvas');
   var ctx = canvas.getContext('2d');
+  canvas.height = img.height;
+  canvas.width = img.width;
   
   //document.body.appendChild(canvas);
   //将图像绘制到Canvas上 
